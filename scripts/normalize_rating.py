@@ -12,12 +12,12 @@ engine = create_engine(DATABASE_URL)
 
 books_raw_df = pd.read_sql('books_raw', engine)
 needed_columns = [
-  'book_id', 'title', 'original_title', 'original_publication_year', 
-  'language_code', 'average_rating', 'ratings_count', 'image_url'
+  'book_id', 'ratings_1', 'ratings_2', 'ratings_3', 
+  'ratings_4', 'ratings_5'
 ]
-books_df_filtered = books_raw_df[needed_columns]
+ratings_df_filtered = books_raw_df[needed_columns]
 
 try:
-  books_df_filtered.to_sql('books', engine, if_exists='append', index= False)
+  ratings_df_filtered.to_sql('ratings_breakdown', engine, if_exists='append', index= False)
 except Exception as e:
   print("Произошла ошибка:", e)

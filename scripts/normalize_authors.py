@@ -19,4 +19,4 @@ authors_df = pd.DataFrame({'name': unique_authors})
 try:
   authors_df.to_sql('authors', engine, if_exists='append', index=False)
 except Exception as e:
-  print("❌ Произошла ошибка:", e)
+  print("Произошла ошибка:", e)

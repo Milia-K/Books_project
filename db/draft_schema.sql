@@ -20,17 +20,6 @@ CREATE TABLE IF NOT EXISTS books_authors (
   PRIMARY KEY (book_id, author_id)
 );
 
-CREATE TABLE IF NOT EXISTS genres (
-  genre_id SERIAL PRIMARY KEY,
-  name TEXT UNIQUE NOT NULL
-);
-
-CREATE TABLE IF NOT EXISTS book_genre (
-  book_id INT REFERENCES books(book_id) ON DELETE CASCADE,
-  genre_id INT REFERENCES genres(genre_id) ON DELETE CASCADE,
-  PRIMARY KEY (book_id, genre_id)
-);
-
 CREATE TABLE IF NOT EXISTS ratings_breakdown (
   book_id INT PRIMARY KEY REFERENCES books(book_id),
   ratings_1 INT,
